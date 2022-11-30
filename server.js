@@ -17,7 +17,6 @@ const io = new Server(server,{
 
 io.on('connection', function (socket) {
   console.log(`User ${socket.id} is connected.`);
-  
   socket.on('save-message', (data) => {
     console.log("new")
     io.emit('new-message', { message: data });
@@ -25,6 +24,10 @@ io.on('connection', function (socket) {
   socket.on('add-room', (data) => {
     console.log("new")
     io.emit('new-room', { message: data });
+  });
+  socket.on('edit-room', (data) => {
+    console.log("new")
+    io.emit('new-name', { message: data });
   });
   socket.on('delete-room', (data) => {
     console.log("delete")
